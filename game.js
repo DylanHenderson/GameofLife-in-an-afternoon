@@ -1,4 +1,6 @@
 
+alert("Welcome");
+
 var alivePointsX = [];
 var alivePointsChangedX = [];
 var deadPointsX = [];
@@ -16,40 +18,15 @@ var draw = [["0","0","0","0","0","0","0","0","0","0"],
 ];
 
 
-var initialise = function(){
-	
-	alivePointsX = [[5,7],[4,7],[3,7]];
-	alivePointsChangedX = [];
-	deadPointsX = [];
-	
 
 
-	
-	console.log(countNeighbours(5,6));
-	update();
-	console.log("");
-	console.log("");
-	
-	update();
-	console.log(alivePointsX);
-	update();
-	update();
-	
+console.log(countNeighbours(1,2));
 
 
-	
 
-	
-	
-	
-	
-	//console.log(alivePointsChangedX);
-	
+function countNeighbours(k,i){
 
 
-};
-
-var countNeighbours = function(k,i){
 	
 	var count = 0;
 	for(var z =0; z<alivePointsX.length;z++){
@@ -114,15 +91,12 @@ var countNeighbours = function(k,i){
 		}
 	}
 	return count;
-};
+}
 
-
-
-var update = function(){
+function update(){
 	
 	deadPointsX = [];
 	alivePointsChangedX = [];
-	
 	alivePointsX = eliminateDuplicates(alivePointsX);
 	
 	
@@ -263,9 +237,11 @@ var update = function(){
 	
 	}
 	
-	for(var i = 0; i< draw.length; i++){
-		console.log(draw[i]);
-	}
+	var table = document.getElementById("theTable");
+	var tbl=getTable();
+	table.innerHTML= tbl;
+	
+	
 	alivePointsX = [];
 	
 	for(var i = 0; i < alivePointsChangedX.length; i++){
@@ -290,7 +266,64 @@ var update = function(){
 	}
 	
 
-};
+}
+
+function getTable(){
+
+	var mytable = "<table id=&quottheTable&quot border=&quot1&quot><tr>";
+		var k = 0;
+		for(var i = 0; i< 10; i++){
+			for(var j = 0; j< 10; j++){
+				
+				mytable += "<td>"+draw[i][j]+"</td>";
+			
+			}
+			mytable += "</tr><tr>";
+		
+		}
+		mytable += "</tr></table>";
+
+	return mytable;
+
+}
+
+function generateTable(){
+	for(var i = 0; i< draw.length; i++){
+		console.log(draw[i]);
+	}
+
+		var mytable = "<table id=&quottheTable&quot border=&quot1&quot><tr>";
+		
+		
+		var k = 0;
+		for(var i = 0; i< 10; i++){
+			for(var j = 0; j< 10; j++){
+				
+				mytable += "<td>"+draw[i][j]+"</td>";
+			
+			}
+			mytable += "</tr><tr>";
+		
+		}
+		mytable += "</tr></table>";
+			document.write(mytable);
+
+}
+
+function initialise(){
+	
+	alivePointsX = [[5,7],[4,7],[3,7]];
+	alivePointsChangedX = [];
+	deadPointsX = [];
+	
+
+
+	
+	console.log(countNeighbours(5,6));
+	update();
+	console.log("");
+
+}
 
 function eliminateDuplicates(output) {
 var doubledOutput = [];
@@ -313,8 +346,5 @@ for(var i = 0; i < output.length; i++) {
 return doubledOutput;
 };
 
-
-
-
-
-initialise();
+//generateTable()
+initialise()

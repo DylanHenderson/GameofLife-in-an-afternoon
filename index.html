@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>My Game of life<h1>
+
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+
+
+
+var alivePointsX = [];
+var alivePointsChangedX = [];
+var deadPointsX = [];
+
+var draw = [["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+			["0","0","0","0","0","0","0","0","0","0"],
+];
+
+function myFunction()
+{
+	alivePointsX = [[5,7],[4,7],[3,7]];
+	alivePointsChangedX = [];
+	deadPointsX = [];
+	
+
+
+	
+	console.log(countNeighbours(5,6));
+	update();
+	console.log("");
+
+	console.log("");
+	update();
+	console.log("");
+
+	console.log("");
+	update();
+	console.log("");
+
+	console.log("");
+	update();
+	
+
+	
+
+}
+
 
 var alivePointsX = [];
 var alivePointsChangedX = [];
@@ -28,13 +85,6 @@ var initialise = function(){
 	console.log(countNeighbours(5,6));
 	update();
 	console.log("");
-	console.log("");
-	
-	update();
-	console.log(alivePointsX);
-	update();
-	update();
-	
 
 
 	
@@ -122,8 +172,6 @@ var update = function(){
 	
 	deadPointsX = [];
 	alivePointsChangedX = [];
-	
-	alivePointsX = eliminateDuplicates(alivePointsX);
 	
 	
 	
@@ -292,29 +340,13 @@ var update = function(){
 
 };
 
-function eliminateDuplicates(output) {
-var doubledOutput = [];
-
-for(var i = 0; i < output.length; i++) {
-    var valueIsInArray = false;
-
-    for(var j = 0; j < doubledOutput.length; j++) {
-        if(doubledOutput[j][0] == output[i][0] &&doubledOutput[j][1] == output[i][1]) {
-            valueIsInArray = true;
-        }
-    }
-
-    if(valueIsInArray) {
-        output.splice(i--, 1);
-    } else {
-        doubledOutput.push(output[i]);
-    }
-}
-return doubledOutput;
-};
 
 
 
 
+</script>
 
-initialise();
+
+
+
+</html>
